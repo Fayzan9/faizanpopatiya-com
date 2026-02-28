@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { FadeInUp } from '@/components/animations/reveal';
 import { SectionWrapper } from '@/components/layout/section-wrapper';
 import { motion } from 'framer-motion';
@@ -9,210 +8,195 @@ import {
   Database, 
   Cpu, 
   Code2, 
-  Sparkles, 
   Network,
-  ArrowUpRight 
+  TrendingUp
 } from 'lucide-react';
 
-const skills = [
+const experience = [
   {
+    year: '2024',
+    role: 'Senior AI/ML Engineer',
+    company: 'AI Startup',
+    duration: '2023 - Present',
+    points: [
+      'Leading development of production LLM applications',
+      'Built RAG systems serving 1M+ queries monthly',
+      'Improved model performance by 40%',
+    ],
+  },
+  {
+    year: '2023',
+    role: 'ML Engineer',
+    company: 'Healthcare Tech',
+    duration: '2022 - 2023',
+    points: [
+      'Fine-tuned medical LLMs with 95% accuracy',
+      'Deployed models for clinical decision support',
+      'Reduced inference time by 60%',
+    ],
+  },
+  {
+    year: '2022',
+    role: 'Data Scientist',
+    company: 'Enterprise SaaS',
+    duration: '2021 - 2022',
+    points: [
+      'Built ML pipelines for sentiment analysis',
+      'Processed 50M+ posts daily',
+      'Improved prediction accuracy by 30%',
+    ],
+  },
+];
+
+const skillCategories = [
+  {
+    category: 'AI & LLMs',
     icon: Brain,
-    title: 'Large Language Models',
-    description: 'Fine-tuning, prompt engineering, and deploying GPT, Claude, Llama models',
-    gradient: 'from-blue-500 to-cyan-500',
-    glowColor: 'neon-blue',
+    skills: ['GPT', 'Claude', 'Llama', 'Fine-tuning', 'RAG', 'Prompt Engineering'],
   },
   {
-    icon: Sparkles,
-    title: 'Generative AI',
-    description: 'Building RAG systems, chatbots, and AI-powered applications',
-    gradient: 'from-purple-500 to-pink-500',
-    glowColor: 'neon-purple',
-  },
-  {
-    icon: Code2,
-    title: 'Python Development',
-    description: 'Expert in Python, FastAPI, Django, and ML frameworks like PyTorch & TensorFlow',
-    gradient: 'from-green-500 to-emerald-500',
-    glowColor: 'accent',
-  },
-  {
-    icon: Database,
-    title: 'Vector Databases',
-    description: 'Working with Pinecone, Weaviate, ChromaDB for semantic search & embeddings',
-    gradient: 'from-orange-500 to-red-500',
-    glowColor: 'neon-pink',
-  },
-  {
+    category: 'ML Frameworks',
     icon: Cpu,
-    title: 'ML Engineering',
-    description: 'Model training, optimization, deployment, and MLOps best practices',
-    gradient: 'from-indigo-500 to-purple-500',
-    glowColor: 'neon-purple',
+    skills: ['PyTorch', 'TensorFlow', 'Hugging Face', 'LangChain', 'scikit-learn'],
   },
   {
+    category: 'Development',
+    icon: Code2,
+    skills: ['Python', 'FastAPI', 'Django', 'TypeScript', 'Next.js', 'Docker'],
+  },
+  {
+    category: 'Data & Vectors',
+    icon: Database,
+    skills: ['Pinecone', 'Weaviate', 'ChromaDB', 'PostgreSQL', 'Redis'],
+  },
+  {
+    category: 'Cloud & Ops',
     icon: Network,
-    title: 'AI Infrastructure',
-    description: 'Building scalable AI systems with AWS, Azure, and containerization',
-    gradient: 'from-cyan-500 to-blue-500',
-    glowColor: 'neon-blue',
+    skills: ['AWS', 'Azure', 'GCP', 'Kubernetes', 'CI/CD', 'MLOps'],
   },
 ];
 
 export function Skills() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
   return (
-    <SectionWrapper id="skills">
+    <SectionWrapper id="skills" className="bg-[var(--bg-secondary)]">
       <FadeInUp>
-        <div className="text-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-[var(--accent)]/20 mb-6"
-          >
-            <Sparkles className="w-4 h-4 text-[var(--accent)]" />
-            <span className="text-sm font-medium text-[var(--text-secondary)]">Skills & Expertise</span>
-          </motion.div>
-          
-          <h2 className="mb-6">
-            <span className="bg-gradient-to-r from-[var(--accent)] via-[var(--neon-purple)] to-[var(--neon-pink)] bg-clip-text text-transparent">
-              AI & ML Expertise
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--bg-primary)] border border-[var(--border)] mb-6">
+            <TrendingUp className="w-4 h-4 text-[var(--accent)]" />
+            <span className="text-sm font-medium text-[var(--text-secondary)] uppercase tracking-wider">
+              Skills & Experience
             </span>
+          </div>
+          
+          <h2 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4" style={{ letterSpacing: '-0.02em' }}>
+            AI & ML Expertise
           </h2>
           
-          <p className="text-xl text-[var(--text-secondary)] max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto">
             Specialized in cutting-edge AI technologies, from LLMs to production ML systems
           </p>
         </div>
       </FadeInUp>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {skills.map((skill, index) => (
-          <FadeInUp key={skill.title} delay={index * 0.1}>
-            <motion.div
-              className="relative group h-full"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              whileHover={{ y: -8, scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            >
-              {/* Card Container */}
-              <div className="relative p-8 rounded-3xl h-full backdrop-blur-xl overflow-hidden">
-                {/* Animated Border */}
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[var(--glass-border)] to-transparent" />
-                <div className="absolute inset-[1px] rounded-3xl glass" />
-                
-                {/* Hover Gradient Background */}
+      {/* Two-Column Layout */}
+      <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+        
+        {/* Left: Experience Timeline */}
+        <FadeInUp delay={0.1}>
+          <div className="space-y-1">
+            <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-8 flex items-center gap-2">
+              <div className="w-1 h-6 bg-[var(--accent)] rounded-full" />
+              Professional Journey
+            </h3>
+
+            <div className="space-y-6">
+              {experience.map((exp, index) => (
                 <motion.div
-                  className={`absolute inset-0 bg-gradient-to-br ${skill.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
-                />
+                  key={exp.company}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  className="relative pl-8 pb-8 border-l-2 border-[var(--border)] last:border-l-0 last:pb-0"
+                >
+                  {/* Timeline Dot */}
+                  <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[var(--accent)] border-4 border-[var(--bg-secondary)]" />
 
-                {/* Glow Effect */}
-                <motion.div
-                  className="absolute -inset-[1px] rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{
-                    background: `linear-gradient(135deg, var(--${skill.glowColor})/20, transparent)`,
-                    filter: 'blur(20px)',
-                  }}
-                />
+                  <div className="space-y-2">
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <h4 className="text-lg font-bold text-[var(--text-primary)]">
+                          {exp.role}
+                        </h4>
+                        <p className="text-sm font-medium text-[var(--accent)]">
+                          {exp.company}
+                        </p>
+                      </div>
+                      <span className="text-xs px-3 py-1 rounded-full bg-[var(--bg-primary)] border border-[var(--border)] text-[var(--text-muted)] whitespace-nowrap">
+                        {exp.duration}
+                      </span>
+                    </div>
 
-                {/* Content */}
-                <div className="relative z-10">
-                  {/* Icon Container */}
-                  <div className="relative mb-6">
-                    <motion.div
-                      className="inline-flex p-4 rounded-2xl relative"
-                      animate={hoveredIndex === index ? {
-                        rotate: [0, -5, 5, -5, 0],
-                      } : {}}
-                      transition={{ duration: 0.5 }}
-                    >
-                      {/* Icon Background */}
-                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[var(--bg-secondary)] to-[var(--bg-tertiary)] opacity-50" />
-                      <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${skill.gradient} opacity-10 group-hover:opacity-20 transition-opacity`} />
-                      
-                      {/* Icon Glow */}
-                      <motion.div
-                        className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${skill.gradient} blur-xl opacity-0 group-hover:opacity-30 transition-opacity`}
-                      />
-                      
-                      <skill.icon className={`w-8 h-8 text-[var(--accent)] relative z-10 transition-transform duration-300 group-hover:scale-110`} />
-                    </motion.div>
-
-                    {/* Decorative Dot */}
-                    <motion.div
-                      className="absolute top-0 right-0 w-2 h-2 rounded-full bg-[var(--accent)]"
-                      animate={{
-                        scale: hoveredIndex === index ? [1, 1.5, 1] : 1,
-                        opacity: hoveredIndex === index ? [0.5, 1, 0.5] : 0.5,
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: hoveredIndex === index ? Infinity : 0,
-                      }}
-                    />
+                    <ul className="space-y-1.5 mt-3">
+                      {exp.points.map((point, i) => (
+                        <li key={i} className="text-sm text-[var(--text-secondary)] flex items-start gap-2">
+                          <span className="text-[var(--accent)] mt-1">•</span>
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </FadeInUp>
 
-                  {/* Title */}
-                  <h3 className="text-xl font-bold mb-3 text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors duration-300 flex items-center gap-2">
-                    {skill.title}
-                    <motion.div
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ 
-                        opacity: hoveredIndex === index ? 1 : 0,
-                        x: hoveredIndex === index ? 0 : -10,
-                      }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <ArrowUpRight className="w-4 h-4" />
-                    </motion.div>
-                  </h3>
+        {/* Right: Skills Visualization */}
+        <FadeInUp delay={0.2}>
+          <div className="space-y-1">
+            <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-8 flex items-center gap-2">
+              <div className="w-1 h-6 bg-[var(--accent)] rounded-full" />
+              Technical Skills
+            </h3>
 
-                  {/* Description */}
-                  <p className="text-[var(--text-secondary)] leading-relaxed">
-                    {skill.description}
-                  </p>
-
-                  {/* Bottom Accent Line */}
+            <div className="space-y-6">
+              {skillCategories.map((category, index) => {
+                const Icon = category.icon;
+                return (
                   <motion.div
-                    className={`absolute bottom-0 left-0 h-1 bg-gradient-to-r ${skill.gradient} rounded-full`}
-                    initial={{ width: 0 }}
-                    animate={{ width: hoveredIndex === index ? '100%' : '0%' }}
-                    transition={{ duration: 0.5 }}
-                  />
-                </div>
-              </div>
+                    key={category.category}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                    className="p-6 rounded-2xl bg-[var(--bg-primary)] border border-[var(--border)] hover:border-[var(--accent)] hover:shadow-[var(--shadow-medium)] transition-all duration-300"
+                  >
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 rounded-lg bg-[var(--accent)]/10">
+                        <Icon className="w-5 h-5 text-[var(--accent)]" />
+                      </div>
+                      <h4 className="text-base font-semibold text-[var(--text-primary)]">
+                        {category.category}
+                      </h4>
+                    </div>
 
-              {/* Floating Particles on Hover */}
-              {hoveredIndex === index && (
-                <>
-                  {[...Array(3)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-1 h-1 rounded-full bg-[var(--accent)]"
-                      style={{
-                        top: `${20 + i * 30}%`,
-                        left: `${10 + i * 20}%`,
-                      }}
-                      initial={{ opacity: 0, y: 0 }}
-                      animate={{
-                        opacity: [0, 1, 0],
-                        y: [-20, -40, -60],
-                      }}
-                      transition={{
-                        duration: 1.5,
-                        delay: i * 0.2,
-                        repeat: Infinity,
-                      }}
-                    />
-                  ))}
-                </>
-              )}
-            </motion.div>
-          </FadeInUp>
-        ))}
+                    <div className="flex flex-wrap gap-2">
+                      {category.skills.map((skill) => (
+                        <span
+                          key={skill}
+                          className="px-3 py-1.5 text-xs font-medium rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-secondary)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors duration-200"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </FadeInUp>
       </div>
     </SectionWrapper>
   );
