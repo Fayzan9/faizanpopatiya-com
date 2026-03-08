@@ -55,15 +55,6 @@ export function Preloader() {
                 ))}
                 <span className="text-[var(--accent)]">.</span>
               </motion.h1>
-
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.2, duration: 0.6 }}
-                className="text-lg md:text-xl text-[var(--text-secondary)]"
-              >
-                {siteConfig.personal.title}
-              </motion.p>
             </motion.div>
 
             {/* Animated Progress Bar */}
