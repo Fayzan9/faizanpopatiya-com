@@ -1,37 +1,23 @@
-'use client';
-
 import { FadeInUp } from '@/components/animations/reveal';
 import { ProjectCard } from '@/components/cards/project-card';
 import { SectionWrapper } from '@/components/layout/section-wrapper';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-
-const featuredProjects = [
-  {
-    title: 'E-Commerce Platform',
-    description: 'A modern e-commerce platform with advanced filtering, real-time inventory, and seamless checkout experience.',
-    image: '/projects/ecommerce.svg',
-    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Stripe'],
-    href: '/projects/ecommerce-platform',
-  },
-  {
-    title: 'SaaS Dashboard',
-    description: 'Analytics dashboard for SaaS products with real-time data visualization and comprehensive reporting.',
-    image: '/projects/dashboard.svg',
-    tags: ['React', 'D3.js', 'Firebase', 'Material UI'],
-    href: '/projects/saas-dashboard',
-  },
-  {
-    title: 'Social Media App',
-    description: 'Mobile-first social platform with real-time messaging, stories, and advanced content discovery.',
-    image: '/projects/social.svg',
-    tags: ['React Native', 'Node.js', 'MongoDB', 'Socket.io'],
-    href: '/projects/social-media-app',
-  },
-];
+import { getProjects } from '@/lib/content';
 
 export function FeaturedProjects() {
+  const allProjects = getProjects();
+  const featuredProjects = allProjects
+    .filter((project) => project.featured)
+    .slice(0, 3)
+    .map((project) => ({
+      title: project.title,
+      description: project.description,
+      image: project.image,
+      tags: project.tags,
+      href: `/projects/${project.slug}`,
+    }));
   return (
     <SectionWrapper id="projects" variant="secondary">
       <FadeInUp>
