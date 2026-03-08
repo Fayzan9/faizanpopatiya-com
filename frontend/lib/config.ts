@@ -5,7 +5,15 @@
  * Update these values to customize your portfolio site.
  */
 
+import type { ColorPaletteName } from './color-palettes';
+
 export const siteConfig = {
+  // Theme Settings
+  theme: {
+    // Choose from: 'indigo', 'ocean', 'sunset', 'purple', 'emerald', 'rose', 'slate', 'cyber'
+    colorPalette: 'indigo' as ColorPaletteName,
+  },
+
   // Personal Information
   personal: {
     name: 'Faizan Popatiya',
@@ -67,6 +75,7 @@ export const siteConfig = {
       company: 'Dr. Babasaheb Ambedkar Technological University',
       duration: 'June 2019 - July 2023',
       description: 'Graduated with a B.Tech in Computer Science Engineering, specializing in AI and machine learning. Completed coursework in algorithms, data structures, machine learning, and deep learning.',
+      highlights: []
     },
   ],
 

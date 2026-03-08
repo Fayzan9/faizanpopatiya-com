@@ -6,22 +6,8 @@
 
 /* Design System Tokens */
 :root {
-  /* Professional Color System - Light Theme */
-  --bg-primary: #F8FAFC;
-  --bg-secondary: #FFFFFF;
-  --bg-tertiary: #F1F5F9;
-  
-  --text-primary: #111827;
-  --text-secondary: #6B7280;
-  --text-muted: #9CA3AF;
-  
-  /* Primary Indigo Accent */
-  --accent: #6366F1;
-  --accent-hover: #4F46E5;
-  --accent-light: #818CF8;
-  
-  --border: #E5E7EB;
-  --border-muted: #F3F4F6;
+  /* Color variables are dynamically injected from theme-utils.ts based on config.ts */
+  /* To change colors, update siteConfig.theme.colorPalette in lib/config.ts */
   
   /* Controlled Glass Effect */
   --glass-bg: rgba(255, 255, 255, 0.06);
@@ -68,22 +54,7 @@
 }
 
 .dark {
-  /* Professional Color System - Dark Theme */
-  --bg-primary: #0F1115;
-  --bg-secondary: #161A23;
-  --bg-tertiary: #1C2230;
-  
-  --text-primary: #F9FAFB;
-  --text-secondary: #9CA3AF;
-  --text-muted: #6B7280;
-  
-  /* Indigo stays consistent in dark mode */
-  --accent: #818CF8;
-  --accent-hover: #6366F1;
-  --accent-light: #A5B4FC;
-  
-  --border: #374151;
-  --border-muted: #1F2937;
+  /* Color variables are dynamically injected from theme-utils.ts based on config.ts */
   
   /* Dark Mode Glass Effect */
   --glass-bg: rgba(22, 26, 35, 0.5);

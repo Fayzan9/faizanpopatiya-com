@@ -7,6 +7,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Preloader } from "@/components/animations/preloader";
 import { siteConfig } from "@/lib/config";
+import { generateThemeCSS } from "@/lib/theme-utils";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,8 +38,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Generate theme CSS based on selected palette
+  const themeCSS = generateThemeCSS(siteConfig.theme.colorPalette);
+
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <style dangerouslySetInnerHTML={{ __html: themeCSS }} />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
