@@ -19,11 +19,11 @@ export const siteConfig = {
     name: 'Faizan Popatiya',
     firstName: 'Faizan',
     lastName: 'Popatiya',
-    title: 'GenAI Engineer',
-    tagline: 'Building Intelligent AI Solutions',
-    shortBio: 'GenAI Engineer specializing in GenAI, LLMs, and production-grade machine learning systems. Transforming complex data into intelligent solutions.',
-    longBio: "I'm a GenAI Engineer with 3+ years of specialized experience in Python development, Large Language Models, and GenAI applications. I build production-grade AI systems that solve real business problems.",
-    extendedBio: "From fine-tuning LLMs to building RAG systems and deploying ML pipelines at scale, I focus on creating reliable, accurate AI solutions that deliver measurable impact.",
+    title: 'AI/ML Engineer',
+    tagline: 'Agentic Systems | Production AI',
+    shortBio: 'AI/ML engineer with 3 years of experience building and operating production AI systems, including multi-agent orchestration, retrieval pipelines, and real-time inference services.',
+    longBio: "I'm an AI/ML engineer who owns systems end-to-end, from architecture and implementation through deployment and reliability. My production workflows serve 300+ case reviewers and have reduced manual review time by 98%.",
+    extendedBio: "I build multi-agent orchestration systems with planner-executor patterns, retrieval-augmented generation pipelines with hybrid retrieval and re-ranking, and real-time inference services deployed on Kubernetes. I focus on reliable, production-grade AI that delivers measurable impact.",
     yearsExperience: '3+',
     avatar: '/avatar.svg',
   },
@@ -55,26 +55,26 @@ export const siteConfig = {
   experience: [
     {
       year: 'Present',
-      role: 'Senior Software Developer',
+      role: 'Software Engineer, AI/ML',
       company: 'Cognida',
-      duration: 'Aug 2023 - Present',
-      description: 'Leading development of GenAI applications using LLMs, vector databases, and Python frameworks. Building RAG systems and fine-tuning models for improved performance.',
-      highlights: []
-    },
-    {
-      year: '2023',
-      role: 'Software Developer Intern',
-      company: 'Cognida.ai',
-      duration: 'Feb 2023 - Aug 2023',
-      description: 'Developed and deployed GenAI applications using LLMs, vector databases, and Python frameworks. Built RAG systems and fine-tuned models for improved performance.',
-      highlights: []
+      duration: 'Mar 2023 - Present',
+      description: 'Own production AI systems end-to-end, from architecture through deployment and reliability, serving 300+ case reviewers and reducing manual review time by 98%.',
+      highlights: [
+        'Architected an assessment-extraction pipeline using LLM-based extraction with schema validation and confidence-scored exception routing, cutting per-case review time from 8 hours to under 10 minutes at 95% field accuracy.',
+        'Designed the agentic architecture for a document drafting-and-management platform: a planner agent routes requests to drafting, compliance-review, and version-control agents via typed function-calling contracts, cutting first-draft turnaround from ~2 days to same-day across 10+ document types.',
+        'Led the engineering design of an internal conversational AI assistant used as the team\'s reference implementation for engineering standards; mentored 2 engineers to independent shipping within 2 weeks.',
+        'Implemented a human-feedback loop with LLM-as-judge regression testing, cutting the incorrect-response rate ~20% over two iterations.',
+        'Leading integration of a RAG pipeline into the assessment system: hybrid BM25 + dense-embedding retrieval, cross-encoder re-ranking, and an LLM-judge groundedness gate, now in staged rollout.',
+        'Deploy and operate platform services on Azure Kubernetes Service (AKS) with Dockerized builds and GitHub Actions CI/CD, sustaining 99.5% uptime (30-day rolling).',
+        'Primary technical point of contact for the client account: ran 30+ live product demos and drove technical design decisions from stakeholder requirements through to shipped features.',
+      ]
     },
     {
       year: '2019',
-      role: 'B.Tech in Computer Science Engineering',
-      company: 'Dr. Babasaheb Ambedkar Technological University',
-      duration: 'June 2019 - July 2023',
-      description: 'Graduated with a B.Tech in Computer Science Engineering, specializing in AI and machine learning. Completed coursework in algorithms, data structures, machine learning, and deep learning.',
+      role: 'Bachelor of Technology in Computer Science',
+      company: 'Dr. B.R. Ambedkar Open University',
+      duration: 'Hyderabad, India',
+      description: 'Graduated with a B.Tech in Computer Science.',
       highlights: []
     },
   ],
@@ -82,36 +82,31 @@ export const siteConfig = {
   // Technical Skills
   skills: [
     {
-      category: 'AI & LLMs',
+      category: 'AI & Agentic Systems',
       icon: 'Brain',
-      skills: ['OpenAI', 'Agentic AI Frameworks', 'RAG', 'Prompt Engineering'],
+      skills: ['Multi-Agent Orchestration', 'RAG (Hybrid Retrieval & Re-ranking)', 'LLM-as-Judge Evaluation', 'Google ADK', 'MCP', 'Function Calling / Tool Use'],
     },
     {
-      category: 'ML Frameworks',
-      icon: 'Cpu',
-      skills: ['PyTorch', 'TensorFlow', 'Hugging Face', 'LangChain', 'scikit-learn'],
-    },
-    {
-      category: 'Development',
+      category: 'Software & Systems',
       icon: 'Code2',
-      skills: ['Python', 'FastAPI', 'Django', 'Docker'],
+      skills: ['Python', 'TypeScript', 'SQL', 'FastAPI', 'WebSockets', 'REST API Design', 'Async/Concurrent Processing'],
     },
     {
-      category: 'Data & Vectors',
+      category: 'Data & Storage',
       icon: 'Database',
-      skills: ['Pinecone', 'Weaviate', 'ChromaDB', 'PostgreSQL', 'Redis'],
+      skills: ['PostgreSQL', 'pgvector', 'Redis'],
     },
     {
       category: 'Cloud & Ops',
       icon: 'Network',
-      skills: ['Azure', 'Kubernetes', 'CI/CD'],
+      skills: ['Docker', 'Azure Kubernetes Service (AKS)', 'Google Cloud Run', 'GitHub Actions CI/CD', 'Observability & Monitoring'],
     },
   ],
 
   // Site Metadata
   metadata: {
     title: 'AI/ML Engineer Portfolio',
-    description: 'Portfolio of an AI/ML Engineer specializing in GenAI, LLMs, and production-grade machine learning systems.',
+    description: 'Portfolio of an AI/ML Engineer specializing in agentic systems, RAG pipelines, and production-grade AI.',
     siteUrl: 'https://faizanpopatiya.com',
     ogImage: '/og-image.png', // Default Open Graph image
   },
@@ -135,8 +130,6 @@ export const siteConfig = {
     { href: '/', label: 'Home' },
     { href: '/projects', label: 'Projects' },
     { href: '/blog', label: 'Blog' },
-    { href: '/store', label: 'Store' },
-    { href: '/playground', label: 'Playground' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
   ],

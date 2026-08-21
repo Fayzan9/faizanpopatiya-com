@@ -1,0 +1,33 @@
+---
+title: "Real-Time Voice AI Agent"
+description: "An async, WebSocket-streamed voice agent bridging Twilio telephony to the Gemini Live API."
+longDescription: "A real-time voice AI agent that bridges Twilio telephony audio to the Gemini Live API over WebSockets, handling interruption/barge-in detection, per-call state management, and backpressure-aware audio buffering. Sustained sub-800ms round-trip latency, load-tested at 20+ concurrent calls on autoscaled Cloud Run instances."
+image: "/projects/voice-ai-agent-hero.svg"
+tags: ["Gemini Live API", "Twilio", "WebSockets", "Python", "Cloud Run"]
+githubUrl: "https://github.com/fayzan9"
+featured: true
+---
+
+## Project Overview
+
+A real-time voice AI agent bridging Twilio telephony audio to Google's Gemini Live API, built for low-latency, natural voice conversations at scale.
+
+## Key Features
+
+- **Async WebSocket Streaming**: Bridges Twilio telephony audio to the Gemini Live API over persistent WebSocket connections.
+- **Interruption / Barge-In Detection**: Detects when a caller interrupts the agent mid-response and reacts accordingly.
+- **Per-Call State Management**: Tracks state independently for each concurrent call.
+- **Backpressure-Aware Audio Buffering**: Buffers audio streams to avoid drops or stutter under load.
+- **Low Latency at Scale**: Sustained sub-800ms round-trip latency, load-tested at 20+ concurrent calls on autoscaled Cloud Run instances.
+
+## Technologies Used
+
+- Gemini Live API
+- Twilio
+- WebSockets
+- Python (async)
+- Google Cloud Run (autoscaling)
+
+## Links
+
+- [GitHub](https://github.com/fayzan9)
