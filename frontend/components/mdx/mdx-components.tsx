@@ -38,7 +38,7 @@ export const mdxComponents: Components = {
 
   // Paragraph
   p: ({ children }) => (
-    <p className="text-lg md:text-xl leading-relaxed mb-6 text-[var(--text-secondary)] font-serif">
+    <p className="text-lg md:text-xl leading-relaxed mb-6 text-[var(--text-secondary)]">
       {children}
     </p>
   ),
@@ -58,12 +58,12 @@ export const mdxComponents: Components = {
 
   // Lists
   ul: ({ children }) => (
-    <ul className="mb-6 space-y-2 text-lg md:text-xl text-[var(--text-secondary)] font-serif pl-6">
+    <ul className="mb-6 space-y-2 text-lg md:text-xl text-[var(--text-secondary)] pl-6">
       {children}
     </ul>
   ),
   ol: ({ children }) => (
-    <ol className="mb-6 space-y-2 text-lg md:text-xl text-[var(--text-secondary)] font-serif pl-6 list-decimal">
+    <ol className="mb-6 space-y-2 text-lg md:text-xl text-[var(--text-secondary)] pl-6 list-decimal">
       {children}
     </ol>
   ),
@@ -75,7 +75,7 @@ export const mdxComponents: Components = {
 
   // Blockquote
   blockquote: ({ children }) => (
-    <blockquote className="border-l-4 border-[var(--accent)] pl-6 py-2 my-8 italic text-xl md:text-2xl text-[var(--text-secondary)] font-serif bg-[var(--bg-tertiary)]/30">
+    <blockquote className="border-l-4 border-[var(--accent)] pl-6 py-2 my-8 italic text-xl md:text-2xl text-[var(--text-secondary)] bg-[var(--bg-tertiary)]/30">
       {children}
     </blockquote>
   ),

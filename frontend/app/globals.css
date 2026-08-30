@@ -31,6 +31,7 @@
   --spacing-unit: 8px;
   --max-width: 1280px;
   --section-spacing: 100px;
+  --font-display: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
   /* Tailwind Compatibility */
   --radius: 0.625rem;
@@ -88,7 +89,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-display);
   --font-mono: var(--font-geist-mono);
   --color-ring: var(--ring);
   --color-input: var(--input);
@@ -122,6 +123,7 @@
   
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-display);
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   
@@ -212,11 +214,11 @@
     box-shadow: var(--shadow-strong);
   }
   
-  /* Medium-Style Article Typography */
+  /* Article Typography */
   .medium-article {
     max-width: 1024px;
     margin: 0 auto;
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--font-display);
   }
   
   .medium-article h1,
@@ -224,8 +226,9 @@
   .medium-article h3,
   .medium-article h4,
   .medium-article h5,
-  .medium-article h6 {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  .medium-article h6,
+  .medium-article li strong {
+    font-family: var(--font-display);
     font-weight: 700;
     letter-spacing: -0.02em;
   }

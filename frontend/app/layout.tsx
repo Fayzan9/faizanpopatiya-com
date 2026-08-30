@@ -45,6 +45,12 @@ export default function RootLayout({
     <html lang="en" className="light" suppressHydrationWarning>
       <head>
         <style dangerouslySetInnerHTML={{ __html: themeCSS }} />
+        <style>{`html[data-preloader-seen] [data-preloader-root]{display:none!important}`}</style>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(sessionStorage.getItem('faizan-preloader-seen')==='1')document.documentElement.dataset.preloaderSeen='';}catch(e){}`,
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

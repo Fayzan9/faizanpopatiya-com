@@ -28,7 +28,7 @@ export default function BlogPage() {
       </SectionWrapper>
 
       {/* Blog Posts Grid */}
-      <SectionWrapper variant="secondary" className="py-0 pb-24">
+      <SectionWrapper variant="secondary" className="pt-8 pb-24">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post, index) => (
             <FadeInUp key={post.slug} delay={index * 0.1}>
