@@ -8,6 +8,7 @@ import { SectionWrapper } from '@/components/layout/section-wrapper';
 import { Button } from '@/components/ui/button';
 import { MDXContent } from '@/components/mdx/mdx-content';
 import { getProject, getProjects } from '@/lib/content';
+import 'highlight.js/styles/github-dark.css';
 
 export async function generateStaticParams() {
   const projects = getProjects();
@@ -53,10 +54,12 @@ export default async function ProjectDetailPage({
     notFound();
   }
 
+  const [primaryTag, ...otherTags] = project.tags;
+
   return (
     <>
       {/* Back Button */}
-      <SectionWrapper className="pt-24 pb-0 md:pb-0 lg:pb-0">
+      <SectionWrapper className="pt-24 pb-8">
         <FadeInUp>
           <Link href="/projects">
             <Button variant="ghost" className="gap-2 mb-8">
@@ -67,68 +70,69 @@ export default async function ProjectDetailPage({
         </FadeInUp>
       </SectionWrapper>
 
-      {/* Hero Image */}
-      <SectionWrapper className="py-0 md:py-0 lg:py-0">
+      {/* Project Article */}
+      <SectionWrapper className="py-0">
         <FadeInUp>
-          <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-[var(--bg-tertiary)] mb-12">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-        </FadeInUp>
-      </SectionWrapper>
+          <article className="max-w-3xl mx-auto">
+            {primaryTag && (
+              <div className="mb-4">
+                <span className="inline-block px-3 py-1 text-sm font-medium rounded-full bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/20">
+                  {primaryTag}
+                </span>
+              </div>
+            )}
 
-      {/* Project Header */}
-      <SectionWrapper className="pt-0 md:pt-0 lg:pt-0">
-        <FadeInUp delay={0.1}>
-          <div className="mb-12">
-            <h1 className="mb-4">{project.title}</h1>
+            <h1 className="mb-6">{project.title}</h1>
+
             <p className="text-xl text-[var(--text-secondary)] mb-6">
               {project.longDescription}
             </p>
 
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-8">
-              {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-4 py-2 rounded-full bg-[var(--bg-tertiary)] text-[var(--text-secondary)] border border-[var(--border)] text-sm font-medium"
-                >
+            <div className="flex flex-wrap items-center gap-6 text-[var(--text-muted)] mb-12 pb-8 border-b border-[var(--border)]">
+              {otherTags.map((tag) => (
+                <span key={tag} className="text-sm">
                   {tag}
                 </span>
               ))}
-            </div>
-
-            {/* Links */}
-            <div className="flex gap-4">
               {project.demoUrl && (
-                <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                  <Button variant="primary" className="gap-2">
-                    <ExternalLink className="w-4 h-4" />
-                    Live Demo
-                  </Button>
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm hover:text-[var(--accent)] transition-colors"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  Live Demo
                 </a>
               )}
               {project.githubUrl && (
-                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                  <Button variant="secondary" className="gap-2">
-                    <Github className="w-4 h-4" />
-                    View Code
-                  </Button>
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm hover:text-[var(--accent)] transition-colors"
+                >
+                  <Github className="w-4 h-4" />
+                  View Code
                 </a>
               )}
             </div>
-          </div>
-        </FadeInUp>
 
-        {/* Content */}
-        <FadeInUp delay={0.2}>
-          <article className="max-w-none">
-            <MDXContent source={project.content} />
+            {project.image && (
+              <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-[var(--bg-tertiary)] mb-12">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            )}
+
+            <div className="max-w-none">
+              <MDXContent source={project.content} />
+            </div>
           </article>
         </FadeInUp>
       </SectionWrapper>

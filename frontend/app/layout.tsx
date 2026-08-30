@@ -42,7 +42,7 @@ export default function RootLayout({
   const themeCSS = generateThemeCSS(siteConfig.theme.colorPalette);
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="light" suppressHydrationWarning>
       <head>
         <style dangerouslySetInnerHTML={{ __html: themeCSS }} />
       </head>

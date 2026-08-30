@@ -8,6 +8,9 @@ interface SectionWrapperProps {
   variant?: 'default' | 'secondary' | 'tertiary';
 }
 
+const hasVerticalPaddingClass = (className?: string) =>
+  Boolean(className && /(?:^|\s)(?:!)?(?:[\w-]+:)*p(?:y|t|b)-/.test(className));
+
 export const SectionWrapper = forwardRef<HTMLElement, SectionWrapperProps>(
   ({ children, className, id, variant = 'default' }, ref) => {
     const bgClass = {
@@ -21,7 +24,7 @@ export const SectionWrapper = forwardRef<HTMLElement, SectionWrapperProps>(
         ref={ref}
         id={id}
         className={cn(
-          'py-16 md:py-24 lg:py-32',
+          !hasVerticalPaddingClass(className) && 'py-8 md:py-12 lg:py-16',
           bgClass,
           className
         )}
