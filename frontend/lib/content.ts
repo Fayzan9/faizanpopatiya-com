@@ -170,6 +170,37 @@ export function getProject(slug: string): Project | null {
   }
 }
 
+export interface CourseTopicContent {
+  title: string;
+  excerpt?: string;
+  date?: string;
+  author?: string;
+  category?: string;
+  content: string;
+}
+
+export function getCourseTopicContent(courseSlug: string, topicSlug: string): CourseTopicContent | null {
+  try {
+    const filePath = path.join(contentDirectory, 'courses', courseSlug, `${topicSlug}.mdx`);
+    if (!fs.existsSync(filePath)) {
+      return null;
+    }
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    const { data, content } = matter(fileContents);
+
+    return {
+      title: data.title,
+      excerpt: data.excerpt,
+      date: data.date,
+      author: data.author || 'Faizan Popatiya',
+      category: data.category,
+      content,
+    };
+  } catch (error) {
+    return null;
+  }
+}
+
 export function getProducts(): Product[] {
   const productsDir = path.join(contentDirectory, 'products');
   

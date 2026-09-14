@@ -1,0 +1,38 @@
+---
+title: "Python Fundamentals"
+excerpt: "The core Python building blocks — syntax, types, and control flow — that every AI/ML engineer relies on daily."
+date: "2026-09-14"
+author: "Faizan Popatiya"
+category: "Software Engineering Foundation"
+published: true
+---
+
+## Why start here
+
+Every model you'll ever train, every pipeline you'll ever ship, sits on top of ordinary Python code. Before touching gradients or transformers, it's worth being genuinely fluent in the language itself — not just able to write a script, but comfortable reasoning about how Python represents and moves data.
+
+## Core building blocks
+
+- **Variables and types** — Python is dynamically typed, but every value still has a concrete type (`int`, `float`, `str`, `bool`, `None`) that determines what operations are valid.
+- **Control flow** — `if`/`elif`/`else`, `for`, `while`, and comprehensions (`[x**2 for x in range(10)]`) are the backbone of almost every data-processing script you'll write.
+- **Functions** — first-class objects in Python. You can pass them as arguments, return them from other functions, and attach default or keyword arguments to make APIs easier to use correctly.
+- **Modules and packages** — how code is organized and reused. Understanding `import` resolution and `__init__.py` avoids a lot of confusing bugs later.
+
+## A small example
+
+```python
+def normalize(values: list[float]) -> list[float]:
+    total = sum(values)
+    if total == 0:
+        return [0.0 for _ in values]
+    return [v / total for v in values]
+
+weights = normalize([2.0, 3.0, 5.0])
+print(weights)  # [0.2, 0.3, 0.5]
+```
+
+Small, boring-looking functions like this show up constantly in ML code — normalizing scores, weights, or probabilities before they're consumed downstream.
+
+## What's next
+
+From here, the next few topics in this level go deeper into Python's data structures, decorators, and iterators/generators — all things you'll lean on heavily once we get to building data pipelines and training loops.

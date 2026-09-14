@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
 import { FadeInUp } from '@/components/animations/reveal';
-import { BlogCard } from '@/components/cards/blog-card';
+import { BlogIndex } from '@/components/blog/blog-index';
 import { SectionWrapper } from '@/components/layout/section-wrapper';
 import { getBlogPosts } from '@/lib/content';
+import { getCourses } from '@/lib/courses';
 
 export const metadata: Metadata = {
   title: 'Blog - Portfolio',
@@ -10,14 +11,27 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  const posts = getBlogPosts();
+  const posts = getBlogPosts().map((post) => ({
+    slug: post.slug,
+    title: post.title,
+    excerpt: post.excerpt,
+    date: post.date,
+    category: post.category,
+    readingTime: post.readingTime,
+  }));
+  const courses = getCourses().map((course) => ({
+    slug: course.slug,
+    title: course.title,
+    tagline: course.tagline,
+    levelCount: course.levels.length,
+    topicCount: course.levels.reduce((sum, level) => sum + level.topics.length, 0),
+  }));
 
   return (
     <>
-      {/* Hero Section */}
-      <SectionWrapper className="pt-32 pb-16">
+      <SectionWrapper className="pt-32 pb-10">
         <FadeInUp>
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto">
             <h1 className="mb-6">Blog</h1>
             <p className="text-xl text-[var(--text-secondary)]">
               Thoughts on web development, design patterns, and the latest
@@ -27,37 +41,7 @@ export default function BlogPage() {
         </FadeInUp>
       </SectionWrapper>
 
-      {/* Blog Posts Grid */}
-      <SectionWrapper variant="secondary" className="pt-8 pb-24">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {posts.map((post, index) => (
-            <FadeInUp key={post.slug} delay={index * 0.1}>
-              <BlogCard
-                title={post.title}
-                excerpt={post.excerpt}
-                date={new Date(post.date).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'short',
-                  day: 'numeric',
-                })}
-                readingTime={post.readingTime}
-                category={post.category}
-                href={`/blog/${post.slug}`}
-              />
-            </FadeInUp>
-          ))}
-        </div>
-
-        {posts.length === 0 && (
-          <FadeInUp>
-            <div className="text-center py-16">
-              <p className="text-xl text-[var(--text-muted)]">
-                No blog posts yet. Check back soon!
-              </p>
-            </div>
-          </FadeInUp>
-        )}
-      </SectionWrapper>
+      <BlogIndex posts={posts} courses={courses} />
     </>
   );
 }
